@@ -1,5 +1,6 @@
 package dojo.factory;
 
+// fabokzs: no need for an earth singleton
 public class Earth {
     private static final Earth instance = new Earth();
     private Weather weather;
