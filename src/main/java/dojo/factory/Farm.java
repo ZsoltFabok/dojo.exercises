@@ -1,10 +1,15 @@
 package dojo.factory;
 
 public class Farm {
-    public Crop harvest(int i) {
-        CornField cornField = new CornField();
-        WheatField wheatField = new WheatField();
+    private CornField cornField;
+	private WheatField wheatField;
+	
+	public Farm(CornField cornField, WheatField wheatField) {
+		this.cornField = cornField;
+		this.wheatField = wheatField;
+	}
 
-        return new Crop(cornField.harvest().weight() + wheatField.harvest().weight());
+	public Crop harvest(int i) {
+		return new Crop(cornField.harvest().weight() + wheatField.harvest().weight());
     }
 }
