@@ -2,8 +2,14 @@ package dojo.factory;
 
 public class CornField {
 
-    public Crop harvest() {
-        Water water = Earth.getInstance().getWeather().lastFall();
+    private Water water;
+	private final Weather weather;
+
+    public CornField(final Weather weather) {
+		this.weather = weather;
+	}
+	public Crop harvest() {
+        water = weather.lastFall();
         Crop crop = new Crop(water.amount() / 5);
         return crop;
     }

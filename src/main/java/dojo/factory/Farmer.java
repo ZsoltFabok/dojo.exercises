@@ -1,15 +1,24 @@
 package dojo.factory;
 
-public class Farmer {
-    public static void main(String... args) {
-        Earth.getInstance().getWeather().rain();
+import java.util.Random;
 
-        Farmer farmer = new Farmer();
+public class Farmer {
+	static Random random = new Random();
+    public Farmer(Farm farm) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String... args) {
+        Earth.getInstance().getWeather().rain(random);
+
+        Farmer farmer = new Farmer(null);
         System.out.println("Harvested " + farmer.work(5).weight() + " tons in 5 days");
     }
 
     private Crop work(int i) {
-        Farm farm = new Farm();
-        return farm.harvest(i);
+    	ApplicationFactory applicationFactory = new ApplicationFactory();
+    	Farm farm = applicationFactory.createFarm();
+
+        return farm.harvest();
     }
 }
