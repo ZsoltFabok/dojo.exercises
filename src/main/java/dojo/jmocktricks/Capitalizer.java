@@ -1,4 +1,4 @@
-package dojo.jmock;
+package dojo.jmocktricks;
 
 public class Capitalizer {
   private Document document;

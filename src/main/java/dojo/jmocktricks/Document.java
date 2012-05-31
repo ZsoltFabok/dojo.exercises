@@ -1,4 +1,4 @@
-package dojo.jmock;
+package dojo.jmocktricks;
 
 public interface Document {
   String readLine();
