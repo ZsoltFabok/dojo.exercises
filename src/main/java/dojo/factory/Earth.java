@@ -1,18 +1,16 @@
 package dojo.factory;
 
-public class Earth {
-    private static final Earth instance = new Earth();
-    private Weather weather;
-
-    private Earth() {
-        weather = new Weather();
-    }
-
-    public static Earth getInstance() {
-        return instance;
-    }
-
-    public Weather getWeather() {
-        return weather;
-    }
+public class Earth
+{
+  private final Weather weather;
+  
+  public Earth(final Weather weather)
+  {
+    this.weather = weather;
+  }
+  
+  public Weather getWeather()
+  {
+    return weather;
+  }
 }

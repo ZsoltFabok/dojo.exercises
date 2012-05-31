@@ -1,15 +1,24 @@
 package dojo.factory;
 
-public class Farmer {
-    public static void main(String... args) {
-        Earth.getInstance().getWeather().rain();
-
-        Farmer farmer = new Farmer();
-        System.out.println("Harvested " + farmer.work(5).weight() + " tons in 5 days");
-    }
-
-    private Crop work(int i) {
-        Farm farm = new Farm();
-        return farm.harvest(i);
-    }
+public class Farmer
+{
+  private final ApplicationFactory factory;
+  
+  public static void main(final String... args)
+  {
+    final Farmer farmer = new Farmer(new ApplicationFactory());
+    System.out.println("Harvested " + farmer.work(5).weight()
+        + " tons in 5 days");
+  }
+  
+  public Farmer(final ApplicationFactory factory)
+  {
+    this.factory = factory;
+  }
+  
+  public Crop work(final int i)
+  {
+    final Farm farm = factory.createFarm();
+    return farm.harvest(i);
+  }
 }
