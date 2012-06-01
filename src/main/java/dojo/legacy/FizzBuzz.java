@@ -7,9 +7,9 @@ public class FizzBuzz {
 		     String[] array = new String[length];
 		     for (int i = 0; i < length; i++) {
 		         if ((start + i) % 15 == 0) {
-		                 array[i]="Fizzbuzz";
+		                 array[i]="FizzBuzz";
 		         } else
-		                 if (start + i % 5 == 0) {
+		                 if ((start + i) % 5 == 0) {
 		                 array[i]="Buzz";
 		                 } else { if ((start + i) % 3 == 0)
 		                 array[i]="Fizz";
