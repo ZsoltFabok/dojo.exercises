@@ -1,0 +1,1 @@
+This repository contains all the coding dojo exercises I put together in 2010.
