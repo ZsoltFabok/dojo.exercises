@@ -1,22 +1,23 @@
 package dojo.legacy;
 
 public class FizzBuzz {
-	public String[] play(int start, int stop) {
+	public String[] play(final int start, final int stop) {
 		if (start <= 0 || stop < start) {
 			throw new IllegalArgumentException();
 		}
 
-		int length = stop - start + 1;
-		String[] array = new String[length];
-		for (int i = 0; i < length; i++) {
-			if ((start + i) % 15 == 0) {
-				array[i] = "FizzBuzz";
-			} else if ((start + i) % 5 == 0) {
-				array[i] = "Buzz";
-			} else if ((start + i) % 3 == 0) {
-				array[i] = "Fizz";
+		final int length = stop - start + 1;
+		final String[] array = new String[length];
+		for (int ind = 0; ind < length; ind++) {
+			final int pos = start + ind;
+			if (pos % 15 == 0) {
+				array[ind] = "FizzBuzz";
+			} else if (pos % 5 == 0) {
+				array[ind] = "Buzz";
+			} else if (pos % 3 == 0) {
+				array[ind] = "Fizz";
 			} else {
-				array[i] = "" + (start + i);
+				array[ind] = Integer.toString(pos);
 			}
 		}
 		return array;
