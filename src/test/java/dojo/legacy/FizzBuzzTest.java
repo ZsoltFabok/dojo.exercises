@@ -3,12 +3,9 @@
  */
 package dojo.legacy;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -17,10 +14,10 @@ import org.junit.Test;
  */
 public class FizzBuzzTest {
 
-	private static FizzBuzz fizzBuzz; 
+	private FizzBuzz fizzBuzz; 
 	
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 		fizzBuzz = new FizzBuzz();
 	}
 	
@@ -38,8 +35,7 @@ public class FizzBuzzTest {
 	@Test
 	public void testPlayWith_1() {
 		String[] result = fizzBuzz.play(1, 1);
-		assertTrue(result.length == 1);
-		assertTrue(result[0].equals("1"));	
+		assertArrayEquals(result, new String[] {"1"});		
 	}
 
 	/**
@@ -48,8 +44,7 @@ public class FizzBuzzTest {
 	@Test
 	public void testPlayWith_3() {
 		String[] result = fizzBuzz.play(3, 3);
-		assertTrue(result.length == 1);
-		assertTrue(result[0].equals("Fizz"));	
+		assertArrayEquals(result, new String[] {"Fizz"});		
 	}
 
 	/**
@@ -58,8 +53,7 @@ public class FizzBuzzTest {
 	@Test
 	public void testPlayWith_5() {
 		String[] result = fizzBuzz.play(5, 5);
-		assertTrue(result.length == 1);
-		assertTrue(result[0].equals("Buzz"));	
+		assertArrayEquals(result, new String[] {"Buzz"});		
 	}
 
 	/**
@@ -68,8 +62,7 @@ public class FizzBuzzTest {
 	@Test
 	public void testPlayWith_15() {
 		String[] result = fizzBuzz.play(15, 15);
-		assertTrue(result.length == 1);
-		assertTrue(result[0].equals("FizzBuzz"));	
+		assertArrayEquals(result, new String[] {"FizzBuzz"});		
 	}
 
 	/**
@@ -78,8 +71,7 @@ public class FizzBuzzTest {
 	@Test
 	public void testPlayWith_101() {
 		String[] result = fizzBuzz.play(101, 101);
-		assertTrue(result.length == 1);
-		assertTrue(result[0].equals("101"));	
+		assertArrayEquals(result, new String[] {"101"});		
 	}
 
 	/**
@@ -96,7 +88,6 @@ public class FizzBuzzTest {
 	@Test
 	public void testPlayWith_10to15() {
 		String[] result = fizzBuzz.play(10, 15);
-		assertTrue(result.length == 6);
 		assertArrayEquals(result, new String[] {"Buzz", "11", "Fizz", "13", "14", "FizzBuzz"});
 	}
 
