@@ -1,1 +1,1 @@
-This repository contains all the coding dojo exercises I put together in 2010.
+This repository contains my coding dojo exercises. You can find the description of the different exercises under the [`exercises`](https://github.com/ZsoltFabok/dojo.exercises/tree/master/exercises) folder.
