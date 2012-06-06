@@ -10,4 +10,4 @@
  * The goal is to introduce the new functionality without breaking the existing one.
  */
 
-package dojo.legacy;
+package dojo.legacy.fizzbuzz;

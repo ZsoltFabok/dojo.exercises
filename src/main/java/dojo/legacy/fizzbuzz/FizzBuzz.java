@@ -1,4 +1,4 @@
-package dojo.legacy;
+package dojo.legacy.fizzbuzz;
 
 public class FizzBuzz {
 	 public String[] play(int start, int stop) {
