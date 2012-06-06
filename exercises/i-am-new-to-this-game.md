@@ -30,7 +30,7 @@ You can put your code under the [dojo.basics](https://github.com/ZsoltFabok/dojo
 ```java
 
   public class FizzBuzzTest {
-    @Text
+    @Test
     public void shouldReturnOneForOne() {
       assertArrayEquals(new String[]{"1"}, new FizzBuzz().play(1, 1);
     }
