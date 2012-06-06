@@ -9,7 +9,7 @@ The exercise have three distinguished steps:
 3. Give up, and delete the legacy code and build it up from scratch using the test cases you wrote in step 1
 
 
-If you are ready the code, the `dojo.legacy.currencyformat` package is waiting for you. It is often hard to find a good way to start, so here is a simple test case for you:
+If you are ready the code, the [`dojo.legacy.currencyformat`](https://github.com/ZsoltFabok/dojo.exercises/tree/master/src/main/java/dojo/legacy/currencyformat) package is waiting for you. It is often hard to find a good way to start, so here is a simple test case for you:
 
 ```java
 
