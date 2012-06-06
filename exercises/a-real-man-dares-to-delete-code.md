@@ -30,7 +30,8 @@ If you are ready the code, the `dojo.legacy.currencyformat` package is waiting f
     @Test
     public void shouldPrintOneForOne() throws IOException {
         HungarianCurrencyFormatter.main(new String[]{"1"});
-        assertEquals("Your number (1) is written like this in Hungarian: \"1\"" + NL, standardOutput.toString());
+        assertEquals("Your number (1) is written like this in Hungarian: \"1\"" + NL,
+            standardOutput.toString());
     }
 
     private void redirectStandardOutput() {
