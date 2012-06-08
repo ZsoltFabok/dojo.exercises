@@ -12,7 +12,7 @@ For example:
 
 - input: 2, 3, 4, 5, 6
 
-- output: 2, Fizz, 4, Buzz, 6
+- output: 2, Fizz, 4, Buzz, Fizz
 
 Here is a recommended class signature for your project:
 
