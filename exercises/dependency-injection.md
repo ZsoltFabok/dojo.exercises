@@ -10,5 +10,18 @@ There a running version of FizzBuzz in the [dojo.dependency](https://github.com/
 5. inject this separate class into the `Gamer`
 6. refactor your test suite
 
+Here is some help with the standard input and output handling:
+```java
+// Writes "something" to the standard input
+ByteArrayInputStream inputStream = new ByteArrayInputStream("something".getBytes());
+System.setIn(inputStream);
+
+
+ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+System.setOut(new PrintStream(outputStream, true));
+
+// Reads what's on the standard output
+outputStream.toString();
+```
 
 Good luck!
