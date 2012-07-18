@@ -3,27 +3,36 @@ package dojo.dependency;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 
 public class Gamer {
 
-    public static void main(String... args) {
-            new Gamer().play();
+    private FizzBuzz fizzBuzz;
+	private BufferedReader br;
+	private PrintStream out;
+
+	public static void main(String... args) {
+            new Gamer(new FizzBuzz()).play();
+    }
+    
+    public Gamer(FizzBuzz fizzbuzz) {
+    	this.fizzBuzz = fizzbuzz;
+    	br = new BufferedReader(new InputStreamReader(System.in));
+    	out = System.out;
     }
 
     public void play() {
             String input = read();
-            FizzBuzz fizzBuzz = new FizzBuzz();
             int pos = input.indexOf(',');
             int start = Integer.parseInt(input.substring(0, pos));
             int stop = Integer.parseInt(input.substring(pos + 1));
             for (String element : fizzBuzz.play(start, stop)) {
-                    System.out.printf("%s ", element);
+					out.printf("%s ", element);
             }
     }
 
     public String read() {
-            System.out.println("fizz buzz: ");
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            out.println("fizz buzz: ");
             try {
                     return br.readLine();
             } catch (IOException ioe) {

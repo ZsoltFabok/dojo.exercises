@@ -17,8 +17,8 @@ public class GamerTest {
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outputStream, true));
 		
-		new Gamer().play();
-
+		new Gamer(new FizzBuzz()).play();
+		
 		String output = outputStream.toString();
 		assertEquals("fizz buzz: \r\n1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz ", output);
 	}
