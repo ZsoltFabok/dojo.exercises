@@ -8,17 +8,17 @@ import java.io.PrintStream;
 public class Gamer {
 
     private FizzBuzz fizzBuzz;
-	private BufferedReader br;
-	private PrintStream out;
+	private BufferedReader bufReader;
+	private PrintStream printOut;
 
 	public static void main(String... args) {
-            new Gamer(new FizzBuzz()).play();
+            new Gamer(new FizzBuzz(), new BufferedReader(new InputStreamReader(System.in)), System.out).play();
     }
     
-    public Gamer(FizzBuzz fizzbuzz) {
+    public Gamer(FizzBuzz fizzbuzz, BufferedReader bufferedReader, PrintStream out) {
     	this.fizzBuzz = fizzbuzz;
-    	br = new BufferedReader(new InputStreamReader(System.in));
-    	out = System.out;
+    	this.bufReader = bufferedReader;
+    	this.printOut = out;
     }
 
     public void play() {
@@ -27,14 +27,14 @@ public class Gamer {
             int start = Integer.parseInt(input.substring(0, pos));
             int stop = Integer.parseInt(input.substring(pos + 1));
             for (String element : fizzBuzz.play(start, stop)) {
-					out.printf("%s ", element);
+					printOut.printf("%s ", element);
             }
     }
 
     public String read() {
-            out.println("fizz buzz: ");
+            printOut.println("fizz buzz: ");
             try {
-                    return br.readLine();
+                    return bufReader.readLine();
             } catch (IOException ioe) {
                     return null;
             }
