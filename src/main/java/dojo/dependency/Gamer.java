@@ -6,19 +6,18 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 public class Gamer {
-
     private FizzBuzz fizzBuzz;
-	private BufferedReader bufReader;
-	private PrintStream printOut;
+	private BufferedReader input;
+	private PrintStream output;
 
 	public static void main(String... args) {
             new Gamer(new FizzBuzz(), new BufferedReader(new InputStreamReader(System.in)), System.out).play();
     }
     
-    public Gamer(FizzBuzz fizzbuzz, BufferedReader bufferedReader, PrintStream out) {
+    public Gamer(FizzBuzz fizzbuzz, BufferedReader in, PrintStream out) {
     	this.fizzBuzz = fizzbuzz;
-    	this.bufReader = bufferedReader;
-    	this.printOut = out;
+    	this.input = in;
+    	this.output = out;
     }
 
     public void play() {
@@ -27,14 +26,14 @@ public class Gamer {
             int start = Integer.parseInt(input.substring(0, pos));
             int stop = Integer.parseInt(input.substring(pos + 1));
             for (String element : fizzBuzz.play(start, stop)) {
-					printOut.printf("%s ", element);
+					output.printf("%s ", element);
             }
     }
 
     public String read() {
-            printOut.println("fizz buzz: ");
+            output.println("fizz buzz: ");
             try {
-                    return bufReader.readLine();
+                    return input.readLine();
             } catch (IOException ioe) {
                     return null;
             }

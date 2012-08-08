@@ -3,34 +3,39 @@ package dojo.dependency;
 import static org.junit.Assert.assertEquals;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-
+import org.junit.Before;
 import org.junit.Test;
 
 public class GamerTest {
-
-	@Test
-	public void test() {
-		ByteArrayInputStream inputStream = new ByteArrayInputStream("1,15".getBytes());
-		System.setIn(inputStream);
-		FakePrintStream fakePrintStream = new FakePrintStream();
-		
-		new Gamer(new FizzBuzz(), new BufferedReader(new InputStreamReader(System.in)), fakePrintStream).play();
-		
-		String output = fakePrintStream.toString();
-		assertEquals("fizz buzz: \r\n1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz ", output);
+	FakeOutputHandler fakeOut;
+	FakeInputHandler fakeIn;
+	
+	@Before
+	public void before() {
+		fakeOut = new FakeOutputHandler();
+		fakeIn = new FakeInputHandler();
 	}
 	
-	class FakeBufferedReader extend Buffered
+	@Test
+	public void test() {
+		//Given: this input
+		fakeIn.setLine("1,15");
+		
+		//When: we play a game
+		new Gamer(new FizzBuzz(), fakeIn, fakeOut).play();
+		
+		//Then: the output should be
+		assertEquals("fizz buzz: \r\n1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz ", fakeOut.toString());
+	}
 	
-	class FakePrintStream extends PrintStream {
+	// Class that captures and concatenates lines from System.out
+	class FakeOutputHandler extends PrintStream {
 		private StringBuilder sb = new StringBuilder();
 		private String nl = System.getProperty("line.separator");
 
-		public FakePrintStream() {
+		public FakeOutputHandler() {
 			super(System.out);
 		}
 		
@@ -53,8 +58,23 @@ public class GamerTest {
 		}
 	}
 	
-	//class FakeBufferedReader extends BufferedReader {
+	// Class that let's you set System.in programmatically
+	class FakeInputHandler extends BufferedReader {
+		private String line;
 		
-	//}
+		public FakeInputHandler() {
+			super(new InputStreamReader(System.in));
+		}
+		
+		@Override
+		public String readLine() {
+			return line;
+		}
+		
+		public void setLine(String line) {
+			this.line = line;
+		}
+		
+	}
 
 }
