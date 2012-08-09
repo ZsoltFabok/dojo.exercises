@@ -11,6 +11,7 @@ import org.junit.Test;
 public class GamerTest {
 	FakeOutputHandler fakeOut;
 	FakeInputHandler fakeIn;
+	private String nl = System.getProperty("line.separator");
 	
 	@Before
 	public void before() {
@@ -27,7 +28,8 @@ public class GamerTest {
 		new Gamer(new FizzBuzz(), fakeIn, fakeOut).play();
 		
 		//Then: the output should be
-		assertEquals("fizz buzz: \r\n1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz ", fakeOut.toString());
+		String expected = "fizz buzz: "+ nl + "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz  ";
+		assertEquals(expected, fakeOut.toString());
 	}
 	
 	// Class that captures and concatenates lines from System.out

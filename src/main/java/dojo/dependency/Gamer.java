@@ -1,41 +1,28 @@
 package dojo.dependency;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 public class Gamer {
-    private FizzBuzz fizzBuzz;
-	private BufferedReader input;
-	private PrintStream output;
+	private InputHandler inputHandler;
+	private InputParser inputParser;
+	private OutputHandler outputHandler;
 
 	public static void main(String... args) {
-            new Gamer(new FizzBuzz(), new BufferedReader(new InputStreamReader(System.in)), System.out).play();
+        new Gamer(new FizzBuzz(), new BufferedReader(new InputStreamReader(System.in)), System.out).play();
     }
     
     public Gamer(FizzBuzz fizzbuzz, BufferedReader in, PrintStream out) {
-    	this.fizzBuzz = fizzbuzz;
-    	this.input = in;
-    	this.output = out;
+    	inputHandler = new InputHandler(in);
+    	inputParser = new InputParser(fizzbuzz);
+    	outputHandler = new OutputHandler(out);
     }
 
     public void play() {
-            String input = read();
-            int pos = input.indexOf(',');
-            int start = Integer.parseInt(input.substring(0, pos));
-            int stop = Integer.parseInt(input.substring(pos + 1));
-            for (String element : fizzBuzz.play(start, stop)) {
-					output.printf("%s ", element);
-            }
-    }
-
-    public String read() {
-            output.println("fizz buzz: ");
-            try {
-                    return input.readLine();
-            } catch (IOException ioe) {
-                    return null;
-            }
+		outputHandler.writeln("fizz buzz: ");
+		String input = inputHandler.readInput();
+        String result = inputParser.parse(input);
+        outputHandler.writef("%s", result);
     }
 }
